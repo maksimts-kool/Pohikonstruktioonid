@@ -58,7 +58,7 @@ print(f"Viie sisestatud täisarvu keskmine on: {keskmine}")
 # Ül 8
 print("  @..@")
 print(" (----)")
-print("( \\__/ )")
+print("( \__/ )")
 print("^^ \"\" ^^")
 
 # Ül 9
