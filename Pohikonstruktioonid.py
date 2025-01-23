@@ -33,3 +33,7 @@ arv1 = int(input("Esimene korrutaja: "))
 arv2 = int(input("Teine korrutaja: "))
 tulemus = arv1 // arv2
 print(arv1,"//",arv2,"=",tulemus)
+
+# upper() - all UPPERCASE
+# lower() - all lowercase
+# capitalize() - first is Uppercase
