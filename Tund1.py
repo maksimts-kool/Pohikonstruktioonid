@@ -1,11 +1,11 @@
 # Ül 1
 print("Tere, maailm!")
 
-sõne = str(input("Kasutaja nimi: "))
-print("Tere, maailm! Tervitan sind",sõne)
+sõne = input("Kasutaja nimi: ")
+print(f"Tere, maailm! Tervitan sind {sõne}")
 
 vanus = int(input("Sinu vanus: "))
-print("Tere, maailm! Tervitan sind",sõne,"Sa oled",vanus,"aastat vana.")
+print(f"Tere, maailm! Tervitan sind {sõne} Sa oled {vanus} aastat vana.")
 # Ül 2
 vanus = 18
 eesnimi = "Jaak"
@@ -23,7 +23,7 @@ else:
     print(eesnimi,"ei käi koolis.")
 # Ül 3
 kommid = 20
-print("Laual on",kommid,"komme.")
+print(f"Laual on {kommid} komme.")
 kustuta = int(input("Mitu komme soovid laualt ära võtta?\n"))
 kommid -= kustuta
-print("Nüüd on laual",kommid,"komme.")
+print(f"Nüüd on laual {kommid} komme.")
