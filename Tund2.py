@@ -127,10 +127,10 @@ except:
 # Ül 10
 try:
     minutid2 = int(input("Sisesta aeg minutites: "))
-    if minutid > 0:
+    if minutid2 > 0:
         tunnid = minutid2 // 60
         jaakmin = minutid2 % 60
-        print(f"{tunnid}:{jaakmin}")
+        print(f"{tunnid}:{jaakmin:02}")
     else:
         print("Sisesta positiivsed arvud")
 except:
