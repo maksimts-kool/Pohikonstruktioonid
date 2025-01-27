@@ -99,3 +99,16 @@ kutuse = float(input("Sisesta tarbitud kütuse kogus: "))
 labitud_km = float(input("Sisesta läbitud kilomeetrite arv: "))
 kutusekulu = (kutuse / labitud_km) * 100
 print(f"Kütusekulu 100 km kohta on: {round(kutusekulu,2)} liitrit")
+
+# Ül 9
+minutid = int(input("Sisesta aeg minutites: "))
+keskmine = 29.9
+aeg_tundides = minutid / 60
+kaugus_km = keskmine * aeg_tundides
+print(f"Rulluisutaja jõuab {minutid} minutiga {round(kaugus_km,2)} km kaugusele.")
+
+# Ül 10
+minutid2 = int(input("Sisesta aeg minutites: "))
+tunnid = minutid2 // 60
+jaakmin = minutid2 % 60
+print(f"{tunnid}:{jaakmin}")
