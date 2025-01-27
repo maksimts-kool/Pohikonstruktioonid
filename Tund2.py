@@ -57,19 +57,18 @@ except:
 
 # Ül 4
 maara_raadius_km = 6378
-mundi_labi_cm = 25.75 # 2-eurose läbimõõt cm
+mundi_labi_cm = 2.575 # 2-eurose läbimõõt cm
 pi = math.pi
-maara_umbermoot_km = 2 * pi * maara_raadius_km
-print(f"Maa ümbermõõt ekvaatori kohal on: {round(maara_umbermoot_km,2)} km")
-mundi_labi_km = mundi_labi_cm * 0.00001 # 1 cm = 0.00001 km
-print(f"2-eurose mündi läbimõõt kilomeetrites on: {round(mundi_labi_km,5)} km")
-mundide_arv = maara_umbermoot_km / mundi_labi_km
-print(f"Kokku on vaja {round(mundide_arv)} 2-eurost münti")
+maara_raadius_cm = maara_raadius_km * 100000 # 1 km = 100000 cm
+umbermoot = 2 * pi * maara_raadius_cm
+mundide_arv = umbermoot / mundi_labi_cm
+print(f"Kokku on vaja {round(mundide_arv):,d} münti")
+print(f"Kokku on vaja {round(mundide_arv*2):,d} Euro")
 
 # Ül 5
-word1_cap = "kill-koll".capitalize()
-word2_cap = "killadi-koll".capitalize()
-print(f"{word1_cap} {word1_cap} {word2_cap} {word1_cap} {word1_cap} {word2_cap} {word1_cap} {word1_cap} {word1_cap}\n{word1_cap}")
+word1_cap = "kill-koll ".capitalize()
+word2_cap = "killadi-koll ".capitalize()
+print(word1_cap*2,word2_cap,word1_cap*2,word2_cap,word1_cap*4)
 
 # Ül 6
 laul1 = """Rong see sõitis tsuhh tsuhh tsuhh,
@@ -87,28 +86,52 @@ print()
 print(laul2.upper())
 
 # Ül 7
-pikkus = float(input("Sisesta ristküliku pikkus: "))
-laius = float(input("Sisesta ristküliku laius: "))
-umbermoot = 2 * (pikkus + laius)
-pindala = pikkus * laius
-print(f"Ristküliku ümbermõõt on: {umbermoot}")
-print(f"Ristküliku pindala on: {pindala}")
+try:
+    pikkus = float(input("Sisesta ristküliku pikkus: "))
+    laius = float(input("Sisesta ristküliku laius: "))
+    if pikkus > 0 and laius > 0:
+        umbermoot = 2 * (pikkus + laius)
+        pindala = pikkus * laius
+        print(f"Ümbermõõt on: {umbermoot}")
+        print(f"Pindala on: {pindala}")
+    else:
+        print("Sisesta positiivsed arvud")
+except:
+    print("Vale andmed!")
 
 # Ül 8
-kutuse = float(input("Sisesta tarbitud kütuse kogus: "))
-labitud_km = float(input("Sisesta läbitud kilomeetrite arv: "))
-kutusekulu = (kutuse / labitud_km) * 100
-print(f"Kütusekulu 100 km kohta on: {round(kutusekulu,2)} liitrit")
+try:
+    kutuse = float(input("Sisesta tarbitud kütuse kogus: "))
+    labitud_km = float(input("Sisesta läbitud kilomeetrite arv: "))
+    if kutuse > 0 and labitud_km > 0:
+        kutusekulu = (kutuse / labitud_km) * 100
+        print(f"Kütusekulu 100 km kohta on: {round(kutusekulu,2)} liitrit")
+    else:
+        print("Sisesta positiivsed arvud")
+except:
+    print("Vale andmed!")
 
 # Ül 9
-minutid = int(input("Sisesta aeg minutites: "))
-keskmine = 29.9
-aeg_tundides = minutid / 60
-kaugus_km = keskmine * aeg_tundides
-print(f"Rulluisutaja jõuab {minutid} minutiga {round(kaugus_km,2)} km kaugusele.")
+try:
+    minutid = int(input("Sisesta aeg minutites: "))
+    if minutid > 0:
+        keskmine = 29.9
+        aeg_tundides = minutid / 60
+        kaugus_km = keskmine * aeg_tundides
+        print(f"Rulluisutaja jõuab {minutid} minutiga {round(kaugus_km,2)} km kaugusele.")
+    else:
+        print("Sisesta positiivsed arvud")
+except:
+    print("Vale andmed!")
 
 # Ül 10
-minutid2 = int(input("Sisesta aeg minutites: "))
-tunnid = minutid2 // 60
-jaakmin = minutid2 % 60
-print(f"{tunnid}:{jaakmin}")
+try:
+    minutid2 = int(input("Sisesta aeg minutites: "))
+    if minutid > 0:
+        tunnid = minutid2 // 60
+        jaakmin = minutid2 % 60
+        print(f"{tunnid}:{jaakmin}")
+    else:
+        print("Sisesta positiivsed arvud")
+except:
+    print("Vale andmed!")
