@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e616ec9d-936f-4a68-bd0f-63f081893120</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund2.py</StartupFile>
+    <StartupFile>IseToo1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="IseToo1.py" />
     <Compile Include="Pohikonstruktioonid.py" />
     <Compile Include="Tund1.py" />
     <Compile Include="Tund2.py" />
