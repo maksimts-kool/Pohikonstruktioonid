@@ -37,3 +37,19 @@ print(arv1,"//",arv2,"=",tulemus)
 # upper() - all UPPERCASE
 # lower() - all lowercase
 # capitalize() - first is Uppercase
+# date.today() - current date
+# date(y,m,d) - current date
+
+# strftime() - format date
+# # 27/12/2022
+# tana = tanao.strftime("%d/%m/%Y")
+# # December 27, 2022
+# tana = tanao.strftime("%B %d, %Y")
+# # 12/27/22
+# tana = tanao.strftime("%m/%d/%y")
+# # Dec-27-2022
+# tana = tanao.strftime("%b-%d-%Y")
+
+# day, month, year
+# monthrange(a, b)[b] - kuu päevade arv
+# round(arv, punktid) - ümardamine
