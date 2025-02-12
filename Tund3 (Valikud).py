@@ -44,3 +44,17 @@ if nimi.isupper() and nimi.lower() == "juku":
         print("Tekkis viga: ",e)
 else:
     print("Ma olen hõivatud")
+
+# Ülesanne 2
+nimi1 = input("Sisesta esimese inimese nimi: ")
+nimi2 = input("Sisesta teise inimese nimi: ")
+
+arv = random.randint(0,1)
+
+
+if (nimi1 == "Hussein" and nimi2 == "Nikita") or (nimi1 == "Nikita" and nimi2 == "Hussein"):
+    print("Täna on minu pinginaabrid")
+else:
+    print("Täna ei ole minu pinginaabrid")
+
+
