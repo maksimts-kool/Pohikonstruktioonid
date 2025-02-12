@@ -53,3 +53,16 @@ print(arv1,"//",arv2,"=",tulemus)
 # day, month, year
 # monthrange(a, b)[b] - kuu päevade arv
 # round(arv, punktid) - ümardamine
+
+# isalnum()
+# isalpha()
+# isascii()
+# isdecimal()
+# isdigit()
+# isidentifier()
+# islower()
+# isnumeric()
+# isprintable()
+# isspace()
+# istitle()
+# isupper()
