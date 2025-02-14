@@ -88,43 +88,52 @@ except Exception as e:
     print("Tekkis viga: ",e)
 
 # Ülesanne 5
-temperatuur = float(input("Sisesta temperatuur C: "))
+try:
+    temperatuur = float(input("Sisesta temperatuur C: "))
 
-if temperatuur > 18:
-    print("See on hea toasoojus talvel.")
-else:
-    print("See on külm!")
+    if temperatuur > 18:
+        print("See on hea toasoojus talvel.")
+    else:
+        print("See on külm!")
+except Exception as e:
+    print("Tekkis viga: ",e)
 
 # Ülesanne 6
-pikkus = float(input("Sisesta inimese pikkus cm: "))
+try:
+    pikkus = float(input("Sisesta inimese pikkus cm: "))
 
-if pikkus < 160:
-    print("Inimene on lühike.")
-elif 160 <= pikkus <= 180:
-    print("Inimene on keskmine.")
-else:
-    print("Inimene on pikk.")
+    if pikkus < 160:
+        print("Inimene on lühike.")
+    elif 160 <= pikkus <= 180:
+        print("Inimene on keskmine.")
+    else:
+        print("Inimene on pikk.")
+except Exception as e:
+    print("Tekkis viga: ",e)
 
 # Ülesanne 7
-pikkus = float(input("Sisesta inimese pikkus cm: "))
-sugu = input("Sisesta sugu: ").lower()
+try:
+    pikkus = float(input("Sisesta inimese pikkus cm: "))
+    sugu = input("Sisesta sugu: ").lower()
 
-if sugu == "mees":
-    if pikkus < 175:
-        print("Mees on lühike.")
-    elif 175 <= pikkus <= 185:
-        print("Mees on keskmine.")
+    if sugu == "mees":
+        if pikkus < 175:
+            print("Mees on lühike.")
+        elif 175 <= pikkus <= 185:
+            print("Mees on keskmine.")
+        else:
+            print("Mees on pikk.")
+    elif sugu == "naine":
+        if pikkus < 160:
+            print("Naine on lühike.")
+        elif 160 <= pikkus <= 170:
+            print("Naine on keskmine.")
+        else:
+            print("Naine on pikk.")
     else:
-        print("Mees on pikk.")
-elif sugu == "naine":
-    if pikkus < 160:
-        print("Naine on lühike.")
-    elif 160 <= pikkus <= 170:
-        print("Naine on keskmine.")
-    else:
-        print("Naine on pikk.")
-else:
-    print("Sugu ei ole korrektne.")
+        print("Sugu ei ole korrektne.")
+except Exception as e:
+    print("Tekkis viga: ",e)
 
 # Ülesanne 8
 try:
@@ -151,56 +160,68 @@ except Exception as e:
     print("Tekkis viga: ",e)
 
 # Ülesanne 9
-külg1 = float(input("Sisesta esimene külg cm: "))
-külg2 = float(input("Sisesta teine külg cm: "))
+try:
+    külg1 = float(input("Sisesta esimene külg cm: "))
+    külg2 = float(input("Sisesta teine külg cm: "))
 
-if külg1 == külg2:
-    print("See on ruut!")
-else:
-    print("See ei ole ruut.")
+    if külg1 == külg2:
+        print("See on ruut!")
+    else:
+        print("See ei ole ruut.")
+except Exception as e:
+    print("Tekkis viga: ",e)
 
 # Ülesanne 10
-arv1 = float(input("Sisesta esimene arv: "))
-arv2 = float(input("Sisesta teine arv: "))
-tehe = input("Mida soovite teha?: ")
+try:
+    arv1 = float(input("Sisesta esimene arv: "))
+    arv2 = float(input("Sisesta teine arv: "))
+    tehe = input("Mida soovite teha?: ")
 
-if tehe == "+":
-    tulemus = arv1 + arv2
-elif tehe == "-":
-    tulemus = arv1 - arv2
-elif tehe == "*":
-    tulemus = arv1 * arv2
-elif tehe == "/":
-    if arv2 != 0:
-        tulemus = arv1 / arv2
+    if tehe == "+":
+        tulemus = arv1 + arv2
+    elif tehe == "-":
+        tulemus = arv1 - arv2
+    elif tehe == "*":
+        tulemus = arv1 * arv2
+    elif tehe == "/":
+        if arv2 != 0:
+            tulemus = arv1 / arv2
+        else:
+            tulemus = "ERROR. Jagamine nulliga."
     else:
-        tulemus = "ERROR. Jagamine nulliga."
-else:
-    tulemus = "Siseta tehe"
+        tulemus = "Siseta tehe"
 
-print(f"Tulemus: {tulemus}")
+    print(f"Tulemus: {tulemus}")
+except Exception as e:
+    print("Tekkis viga: ",e)
 
 # Ülesanne 11
-sünnipäev = int(input("Sisesta oma sünnipäev (aasta): "))
+try:
+    sünnipäev = int(input("Sisesta oma sünnipäev (aasta): "))
 
-aasta = datetime.date.today().year
-vanus = aasta - sünnipäev
+    aasta = datetime.date.today().year
+    vanus = aasta - sünnipäev
 
-if vanus % 10 == 0:
-    print(f"Teil on {vanus} aastat! See on juubel!")
-else:
-    print(f"Teil on {vanus} aastat. See pole juubel.")
+    if vanus % 10 == 0:
+        print(f"Teil on {vanus} aastat! See on juubel!")
+    else:
+        print(f"Teil on {vanus} aastat. See pole juubel.")
+except Exception as e:
+    print("Tekkis viga: ",e)
 
 # Ülesanne 12
-hind = float(input("Sisesta toote hind: "))
-if hind <= 10:
-    soodustus = 0.10
-else:
-    soodustus = 0.20
+try:
+    hind = float(input("Sisesta toote hind: "))
+    if hind <= 10:
+        soodustus = 0.10
+    else:
+        soodustus = 0.20
 
-lõpphind = hind * (1 - soodustus)
+    lõpphind = hind * (1 - soodustus)
 
-print(f"Hind pärast soodustust on: {round(lõpphind,2)} €")
+    print(f"Hind pärast soodustust on: {round(lõpphind,2)} €")
+except Exception as e:
+    print("Tekkis viga: ",e)
 
 # Ülesanne 13
 sugu = input("Sisesta oma sugu: ").lower()
@@ -208,22 +229,27 @@ sugu = input("Sisesta oma sugu: ").lower()
 if sugu == "naine":
     print("Meeskond on ainult meestele.")
 else:
-    vanus = int(input("Sisesta oma vanus: "))
-    if 16 <= vanus <= 18:
-        print("Sobid meeskonnale!")
-    else:
-        print("Sa ei sobi meeskonda")
+    try:
+        vanus = int(input("Sisesta oma vanus: "))
+        if 16 <= vanus <= 18:
+            print("Sobid meeskonnale!")
+        else:
+            print("Sa ei sobi meeskonda")
+    except Exception as e:
+        print("Tekkis viga: ",e)
 
 # Ülesanne 14
+try:
+    inimesed = int(input("Sisesta inimeste arv: "))
+    buss_suurus = int(input("Sisesta bussi kohtade arv: "))
 
-inimesed = int(input("Sisesta inimeste arv: "))
-buss_suurus = int(input("Sisesta bussi kohtade arv: "))
+    bussid = inimesed // buss_suurus
+    viimane_buss = inimesed % buss_suurus
 
-bussid = inimesed // buss_suurus
-viimane_buss = inimesed % buss_suurus
+    if viimane_buss > 0:
+        bussid += 1
 
-if viimane_buss > 0:
-    bussid += 1
-
-print(f"On vaja {bussid} bussi.")
-print(f"Viimases bussis on {viimane_buss} inimest.")
+    print(f"On vaja {bussid} bussi.")
+    print(f"Viimases bussis on {viimane_buss} inimest.")
+except Exception as e:
+    print("Tekkis viga: ",e)
