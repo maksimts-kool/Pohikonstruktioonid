@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e616ec9d-936f-4a68-bd0f-63f081893120</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund3 (Valikud).py</StartupFile>
+    <StartupFile>Tund4_2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,6 +26,8 @@
     <Compile Include="Tund1.py" />
     <Compile Include="Tund2.py" />
     <Compile Include="Tund3 %28Valikud%29.py" />
+    <Compile Include="Tund4.py" />
+    <Compile Include="Tund4_2.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
