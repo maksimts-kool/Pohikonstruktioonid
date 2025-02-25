@@ -1,7 +1,15 @@
-# Näidisfor i in range(10):    print(i, end=", ")
-for i in range(2, 12):    print(i, end="; ")
-for i in range(2, 12, 3):    print(i, end=" ")
-for i in range(12, 2, -2):    print(i, end=" ")# Ül 1count = 0
+# Näidis
+for i in range(10):
+    print(i, end=", ")
+for i in range(2, 12):
+    print(i, end="; ")
+for i in range(2, 12, 3):
+    print(i, end=" ")
+for i in range(12, 2, -2):
+    print(i, end=" ")
+
+# Ül 1
+count = 0
 for i in range(15):
     while True:
         try:
@@ -172,8 +180,137 @@ for i in range(N):
 
 print(f"Kogu meeskond töötas {round(total_hours)} tundi.")
 
+# Ül 13
+count = 0
+total_sum = 0
+
+for number in range(100, 1001):
+    if number % 7 == 0:
+        count += 1
+        total_sum += number
+print(f"jagatavate arvude arv: {count}")
+print(f"jagatavate arvude summa: {total_sum}")
+
+# Ül 14
+import random
+N = random.randint(1, 20)
+product = 1
+
+for i in range(1, N + 1):
+    product *= i
+
+print(f"Juhuslik number N: {N}")
+print(f"Numbrite 1 kuni {N}: {product}")
+
 # Ül 15
 for i in range(10):
     for j in range(10):
         print(j,end=" ")  
     print()
+
+# Ül 16
+
+
+# Ül 17
+for i in range(1, 10):
+    print(f"2*{i}={2 * i}")
+
+# Ül 18
+for num in range(20, 51):
+    if num % 3 == 0 and num % 5 != 0:
+        print(num)
+
+# Ül 19
+for num in range(35, 88):
+    if num % 7 in {1, 2, 5}:
+        print(num)
+
+# Ül 20
+total = 0
+for num in range(1, 51):
+    if num % 5 == 0 or num % 7 == 0:
+        total += num
+print("Summa:", total)
+
+# Ül 21
+
+
+# Ül 22
+total = 0
+for num in range(100, 201):
+    if num % 17 == 0:
+        total += num
+print("Summa:", total)
+
+# Ül 23
+
+
+# Ül 24
+N = int(input("Sisestage õpilaste arv: "))
+total_height = 0
+
+for i in range(N):
+    height = float(input("Sisestage õpilase pikkus: "))
+    total_height += height
+
+average_height = round(total_height / N)
+print(f"Õpilaste keskmine pikkus: {average_height}")
+
+# Ül 25
+N = int(input("Sisestage arv N: "))
+count = 0
+
+for num in range(1, N + 1):
+    if num % 2 != 0 and num % 3 != 0 and num % 5 != 0:
+        count += 1
+
+print(f"Numbrite arv: {count}")
+
+# Ül 26
+for A in range(10, 100):
+    for B in range(10, 100):
+        num = int(f"{A}{B}")
+        if num % (A * B) == 0:
+            print("Arvud:", A, B)
+            break
+
+# Ül 27
+for A in range(10, 100):
+    for B in range(10, 100):
+        num1 = int(f"{A}{B}")
+        num2 = int(f"{B}{A}")
+        if num1 % 99 == 0 and num2 % 49 == 0:
+            print("Arvud:", A, B)
+            break
+
+# Ül 28
+import random
+
+number = random.randint(1, 100)
+attempts = 0
+
+while True:
+    guess = int(input("Arvake ära number 1 kuni 100: "))
+    attempts += 1
+    if guess < number:
+        print("Arvatav number on suurem.")
+    elif guess > number:
+        print("Arvatav number on väiksem.")
+    else:
+        print(f"Palju õnne! Sa arvasid ära arvu {attempts} katsetega.")
+        break
+    
+# Ül 29
+
+
+# Ül 30
+
+# Ül 31
+K = int(input("Sisestage kotlettide arv: "))
+M = int(input("Asetage pannile vastav arv kotlette: "))
+
+full_pans = K // M
+remaining = K % M
+
+print(f"Täielikud paanid: {full_pans}")
+print(f"Praadimiseks on jäänud: {remaining} kotletti")
