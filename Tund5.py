@@ -7,7 +7,7 @@ print("3 - Tase 3 (raske)")
 while True:
     try:
         level = int(input("Sisesta raskusaste: "))
-        if level in [1, 2, 3]:
+        if level in [1, 2, 3]: # level == 1 or level == 2 or level == 3
             break
         else:
             print("Palun sisesta AINULT 1, 2 või 3.")
