@@ -47,14 +47,31 @@ for l in range(lahenemine):
 print("Kõik on tehtud")
 
 # Määrake H aasta jooksul pangas kogunenud rahasumma, kui Vlad'i esialgne sissemakse oli Y dollarit ja sissemakse tehti tingimustel Z% aastas.
-H = int(input("Kogunenud rahasumma: "))
-Y = float(input("Esialne sissemaks: "))
-Z = float(input("% aastas: "))
-interest = Y * (Z/100)
+Y = float(input("Esialne sissemakse: "))
+Z = float(input("Intress: "))
+H = int(input("Aastate arv: "))
+interest = Y * (Z / 100)
 
-for i in range(H):
-    print(f"{i} aasta intress on {round(Y,2)}%")
+for a in range(1,H+1):
     Y += interest
-
-print(Y)
+    print(f"Aasta {a} lõpus on kogunenud summa: {round(Y,2)}$")
 # küsitlege O kasutajaid. Selgitage välja nende kaal ja pikkus ning vanus. Leidke kehamassiindeks ja teatage kasutajale selle indeksi iseloomustus.
+O = int(input("Mitu kasutajat soovite küsitleda? "))
+
+for i in range(O):
+    print(f"\nKasutaja {i+1}:")
+    kaal = float(input("Sisestage oma kaal kg: "))
+    pikkus = float(input("Sisestage oma pikkus m: "))
+    vanus = int(input("Sisestage oma vanus: "))
+    kmi = kaal / (pikkus ** 2)
+
+    if kmi < 18.5:
+        iseloom = "Alakaal"
+    elif 18.5 <= kmi < 24.9:
+        iseloom = "Normaalkaal"
+    elif 25 <= kmi < 29.9:
+        iseloom = "Ülekaal"
+    else:
+        iseloom = "Rasvumine"
+        
+    print(f"Kasutaja {i+1} KMI on {round(kmi,2)}, mis tähendab: {iseloom}")
