@@ -47,9 +47,15 @@ for l in range(lahenemine):
 print("Kõik on tehtud")
 
 # Määrake H aasta jooksul pangas kogunenud rahasumma, kui Vlad'i esialgne sissemakse oli Y dollarit ja sissemakse tehti tingimustel Z% aastas.
-Y = float(input("Esialne sissemakse: "))
-Z = float(input("Intress: "))
-H = int(input("Aastate arv: "))
+while True:
+    try:
+        Y = float(input("Esialne sissemakse: "))
+        Z = float(input("Intress: "))
+        H = int(input("Aastate arv: "))
+        break
+    except:
+        print("Ainult numbrid")
+
 interest = Y * (Z / 100)
 
 for a in range(1,H+1):
@@ -60,9 +66,14 @@ O = int(input("Mitu kasutajat soovite küsitleda? "))
 
 for i in range(O):
     print(f"\nKasutaja {i+1}:")
-    kaal = float(input("Sisestage oma kaal kg: "))
-    pikkus = float(input("Sisestage oma pikkus m: "))
-    vanus = int(input("Sisestage oma vanus: "))
+    while True:
+        try:
+            kaal = float(input("Sisestage oma kaal kg: "))
+            pikkus = float(input("Sisestage oma pikkus m: "))
+            vanus = int(input("Sisestage oma vanus: "))
+            break
+        except:
+            print("Ainult numbrid")
     kmi = kaal / (pikkus ** 2)
 
     if kmi < 18.5:
