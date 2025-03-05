@@ -50,7 +50,7 @@ print(f"Max hinne: {maxhin}")
 abema = 1
 
 for i in range(3, 25, 3):
-    kor = i // 3
+    kor = i // 3        # kor += 1
     cel = abema * (2 ** kor)
     print(f"{i} tunni jooksul on {cel} rakke")
 
