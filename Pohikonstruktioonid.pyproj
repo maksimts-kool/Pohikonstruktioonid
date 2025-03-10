@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e616ec9d-936f-4a68-bd0f-63f081893120</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>KontrollTund8.py</StartupFile>
+    <StartupFile>Tund9(Järjend).py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IseToo1.py" />
-    <Compile Include="KontrollTund8.py" />
+    <Compile Include="Tund8Kontroll.py" />
     <Compile Include="Pohikonstruktioonid.py" />
     <Compile Include="Tund1.py" />
     <Compile Include="Tund2.py" />
@@ -33,6 +33,7 @@
     <Compile Include="Tund5.py" />
     <Compile Include="Tund6.py" />
     <Compile Include="Tund7.py" />
+    <Compile Include="Tund9%28Järjend%29.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
