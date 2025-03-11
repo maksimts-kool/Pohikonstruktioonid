@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e616ec9d-936f-4a68-bd0f-63f081893120</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund9(Järjend).py</StartupFile>
+    <StartupFile>Tund10.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IseToo1.py" />
+    <Compile Include="Tund10.py" />
     <Compile Include="Tund8Kontroll.py" />
     <Compile Include="Pohikonstruktioonid.py" />
     <Compile Include="Tund1.py" />
