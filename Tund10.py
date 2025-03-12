@@ -21,8 +21,7 @@ while True:
             else: print("Vale valik")
         except:
             print("Ainult nubrid")
-    if valik == 0:
-        break
+    if valik == 0: break
 
     while True:
         tekst = input("Sisesta tekst: ")
