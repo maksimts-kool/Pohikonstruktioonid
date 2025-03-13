@@ -67,10 +67,9 @@ while True:
     print(f"Mängija 2: {scores[1]} punkti")
     time.sleep(.5)
 
-    if valik != sõbra_valik:
-        while True:
-            val = input("Mängime veel (jah/ei)? ")
-            if val == "jah" or val == "ei": break
-            else: print("Sisesta ainult jah/ei")
-        if val == "ei":
-            break
+    while True:
+        val = input("Mängime veel (jah/ei)? ")
+        if val == "jah" or val == "ei": break
+        else: print("Sisesta ainult jah/ei")
+    if val == "ei":
+        break
