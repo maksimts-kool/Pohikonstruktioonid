@@ -1,4 +1,6 @@
-import random
+﻿import random
+import colorama
+colorama.just_fix_windows_console()
 
 sõnad = ['python', 'programmeerimine', 'algoritm', 'arvuti', 'klaviatuur', 'hiir', 'monitor']
 
