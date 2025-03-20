@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>e616ec9d-936f-4a68-bd0f-63f081893120</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Tund13(Funktsioonid).py</StartupFile>
+    <StartupFile>Tund14.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,6 +27,8 @@
     <Compile Include="Tund12.py" />
     <Compile Include="Tund13_Moodul.py" />
     <Compile Include="Tund13%28Funktsioonid%29.py" />
+    <Compile Include="Tund14.py" />
+    <Compile Include="Tund14_Moodul.py" />
     <Compile Include="Tund8Kontroll.py" />
     <Compile Include="Pohikonstruktioonid.py" />
     <Compile Include="Tund1.py" />
