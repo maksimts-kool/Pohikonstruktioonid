@@ -7,8 +7,9 @@ while True:
     print("\nVali tegevus:")
     print("1. Registreerimine")
     print("2. Autoriseerimine")
-    print("3. Muuda parooli")
+    print("3. Muuda parooli või kasutajanime")
     print("4. Taasta parool")
+    print("5. Välju")
     valik = int(input("Sisesta valik (1-5): "))
 
     if valik == 1:
@@ -23,7 +24,7 @@ while True:
             digit = False
             lower = False
             upper = False
-            punctuation = False
+            punkt = False
 
             for p in parool:
                 if p.isdigit(): # 1,2,3...
@@ -33,9 +34,9 @@ while True:
                 elif p.isupper(): # A,B,C...
                     upper = True
                 elif p in string.punctuation: # !,.,?...
-                    punctuation = True
+                    punkt = True
 
-            if digit and lower and upper and punctuation:
+            if digit and lower and upper and punkt:
                 vastus = registreerimine(loginid, paroolid, kasutajanimi, parool)
                 print(vastus)
             else:
@@ -48,16 +49,26 @@ while True:
         parool = input("Sisesta parool: ")
         print(autoriseerimine(loginid, paroolid, kasutajanimi, parool))
 
-    else:
-        print("Vale valik, proovi uuesti!")
-    '''
     elif valik == 3:
-        kasutajanimi = input("Sisesta kasutajanimi: ")
-        vana_parool = input("Sisesta vana parool: ")
-        uus_parool = input("Sisesta uus parool: ")
-        print(muuda_parool(loginid, paroolid, kasutajanimi, vana_parool, uus_parool))
+        valik2 = input("Kas soovid muuta nime või parooli (nimi/parool)? ").lower()
+        if valik2 == "nimi":
+            vana_nimi = input("Sisesta vana kasutajanimi: ")
+            uus_nimi = input("Sisesta uus kasutajanimi: ")
+            print(muuda_nimi(loginid, vana_nimi, uus_nimi))
+        elif valik2 == "parool":
+            kasutajanimi = input("Sisesta kasutajanimi: ")
+            vana_parool = input("Sisesta vana parool: ")
+            uus_parool = input("Sisesta uus parool: ")
+            print(muuda_parool(loginid, paroolid, kasutajanimi, vana_parool, uus_parool))
+        else:
+            print("Vale valik!")
 
     elif valik == 4:
         kasutajanimi = input("Sisesta kasutajanimi: ")
         print(taasta_parool(loginid, paroolid, kasutajanimi))
-    '''
+
+    elif valik == 5:
+        print("Programm väljub!")
+        break
+    else:
+        print("Vale valik, proovi uuesti!")
