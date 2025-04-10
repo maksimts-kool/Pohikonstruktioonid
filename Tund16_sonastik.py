@@ -69,7 +69,7 @@ def testi_teadmisi(sonad):
         else:
             print(f"Vale! Õige vastus oli: {kirje[siht]}")
     
-    return f"Testi tulemus: {skoor}/{total} õiget vastust!"
+    return print(f"Testi tulemus: {skoor}/{total} õiget vastust!")
 
 def kysi_kasutajalt_sisestus(prompt):
     sisestus = input(prompt)
