@@ -7,6 +7,7 @@ def lae_sonad_failist():
             for line in file:
                 est, rus, eng = line.strip().split('-')
                 sonad.append({'est': est, 'rus': rus, 'eng': eng})
+            file.close()
     except:
         print("Faili ei leitud")
     return sonad
@@ -15,6 +16,7 @@ def salvesta_sonad_faili(sonad):
     with open("Tund16_list.txt", "w", encoding="utf-8") as file:
         for kirje in sonad:
             file.write(f"{kirje['est']}-{kirje['rus']}-{kirje['eng']}\n")
+        file.close()
 
 def otsi_sona(sonad, allikas, siht, sona):
     for kirje in sonad:
