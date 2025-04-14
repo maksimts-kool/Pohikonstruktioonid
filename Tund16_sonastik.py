@@ -1,19 +1,24 @@
 import random
 
-sonad = [
-    {'est': 'koer', 'rus': 'собака', 'eng': 'dog'},
-    {'est': 'kass', 'rus': 'кошка', 'eng': 'cat'},
-    {'est': 'maja', 'rus': 'дом', 'eng': 'house'},
-    {'est': 'auto', 'rus': 'машина', 'eng': 'car'},
-    {'est': 'päike', 'rus': 'солнце', 'eng': 'sun'}
-]
+def lae_sonad_failist():
+    sonad = []
+    try:
+        with open("Tund16_list.txt", "r", encoding="utf-8") as file:
+            for line in file:
+                est, rus, eng = line.strip().split('-')
+                sonad.append({'est': est, 'rus': rus, 'eng': eng})
+    except:
+        print("Faili ei leitud, alustame tühja sõnastikuga.")
+    return sonad
 
-def loo_sonastik():
-    return sonad # returns list
+def salvesta_sonad_faili(sonad):
+    with open("Tund16_list.txt", "w", encoding="utf-8") as file:
+        for kirje in sonad:
+            file.write(f"{kirje['est']}-{kirje['rus']}-{kirje['eng']}\n")
 
 def otsi_sona(sonad, allikas, siht, sona):
     for kirje in sonad:
-        if kirje[allikas] == sona.lower(): # check if in list
+        if kirje[allikas] == sona.lower():  # Check if in list
             return kirje[siht]
     return "Sõna ei leitud!"
 
@@ -21,8 +26,9 @@ def lisa_sona(sonad):
     uus_est = input("Sisesta sõna (est): ").lower()
     uus_rus = input("Sisesta sõna (rus): ").lower()
     uus_eng = input("Sisesta sõna (eng): ").lower()
-    
-    sonad.append({'est': uus_est, 'rus': uus_rus, 'eng': uus_eng}) # add new row
+
+    sonad.append({'est': uus_est, 'rus': uus_rus, 'eng': uus_eng})  # Add new row
+    salvesta_sonad_faili(sonad)
     print("Uus sõna on lisatud!")
 
 def kontrolli_keel(prompt):
@@ -37,9 +43,10 @@ def paranda_sona(sonad):
     allikas = kontrolli_keel("Sisesta keel, millest sõna parandada: ")
     vana_sona = input(f"Sisesta eelmine sõna ({allikas}): ").lower()
     for kirje in sonad:
-        if kirje[allikas] == vana_sona: # check if word is in list
+        if kirje[allikas] == vana_sona:  # Check if word is in list
             uus_sona = input(f"Sisesta uus sõna ({allikas}): ").lower()
-            kirje[allikas] = uus_sona # change old word to new
+            kirje[allikas] = uus_sona  # Change old word to new
+            salvesta_sonad_faili(sonad)
             return "Sõna on parandatud!"
     print("Sõna ei leitud!")
 
@@ -60,10 +67,10 @@ def testi_teadmisi(sonad):
     allikas, siht = vali_keelte_suund()
     print(f"Testi suund: {allikas} -> {siht}")
     for i in range(total):
-        kirje = random.choice(sonad) # chooses random word
+        kirje = random.choice(sonad)  # Chooses random word
         print(f"Tõlgi sõna ({allikas}): {kirje[allikas]}")
         vastus = input("Sisesta tõlge: ").lower()
-        if vastus == kirje[siht]:  # Kontrolli, kas vastus on õige
+        if vastus == kirje[siht]:  # Check if the answer is correct
             skoor += 1
             print(f"Õige! Teie skoor: {skoor}")
         else:
@@ -100,6 +107,7 @@ def kustuta_sona(sonad):
     for kirje in sonad:
         if kirje[allikas] == del_sona:
             sonad.remove(kirje)
+            salvesta_sonad_faili(sonad)
             print("Sõna on kustutatud!")
             return
     print("Sõna ei leitud!")

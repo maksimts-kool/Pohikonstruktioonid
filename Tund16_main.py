@@ -1,7 +1,7 @@
 from Tund16_sonastik import *
 
 valjasta_tervitus()
-sonad = loo_sonastik()
+sonad = lae_sonad_failist()
 
 while True:
     kuva_menuu()
