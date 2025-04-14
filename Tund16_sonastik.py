@@ -8,7 +8,7 @@ def lae_sonad_failist():
                 est, rus, eng = line.strip().split('-')
                 sonad.append({'est': est, 'rus': rus, 'eng': eng})
     except:
-        print("Faili ei leitud, alustame tühja sõnastikuga.")
+        print("Faili ei leitud")
     return sonad
 
 def salvesta_sonad_faili(sonad):
