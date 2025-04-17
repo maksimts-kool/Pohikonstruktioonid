@@ -43,6 +43,23 @@ def send_email(to_address, subject, content):
         server.login(sender_email, sender_password)
         server.send_message(message)
 
+def update_file(name, email, password):
+    lines = []
+    updated = False
+    with open("Tund14.txt", "r") as file:
+        lines = file.readlines()
+
+    with open("Tund14.txt", "w") as file:
+        for line in lines:
+            stored_name, stored_email, stored_password = line.strip().split(":")
+            if stored_email == email:
+                file.write(f"{name}:{email}:{password}\n")
+                updated = True
+            else:
+                file.write(line)
+        if not updated:
+            file.write(f"{name}:{email}:{password}\n")
+
 def registreerimine(loginid: list, paroolid: list, kasutajanimi: str, email: str, parool: str = None):
     """
     Registreerib uue kasutaja, kui kasutajanimi pole olemas.
@@ -64,7 +81,7 @@ def registreerimine(loginid: list, paroolid: list, kasutajanimi: str, email: str
     subject = "Kasutaja registreerimine õnnestus"
     content = f"Tere {kasutajanimi},\n\nTeie konto on registreeritud!\nTeie parool on: {parool}\n\nParimate soovidega,\nMinu sait"
     send_email(email, subject, content)
-
+    update_file(kasutajanimi, email, parool)  # Save to file
     return f"Kasutaja {kasutajanimi} registreeritud! Parool: {parool}"
 
 def autoriseerimine(loginid: list, paroolid: list, kasutajanimi: str, parool: str):
@@ -83,16 +100,26 @@ def autoriseerimine(loginid: list, paroolid: list, kasutajanimi: str, parool: st
     return "Vale kasutajanimi või parool!"
 
 def muuda_nimi(loginid: list, vana_nimi: str, uus_nimi: str, email: str):
-    """
-    Muudab kasutaja nime, kui vana nimi on olemas.
-    :param list loginid: Kui kasutajate nime on järjendis
-    :param str vana_nimi: Vana kasutajanimi
-    :param str uus_nimi: Uus kasutajanimi
-    :rtype: str
-    """
     if vana_nimi in loginid:
         i = loginid.index(vana_nimi)
         loginid[i] = uus_nimi
+
+        try:
+            with open("Tund14.txt", "r") as file:
+                lines = file.readlines()
+                for line in lines:
+                    stored_name, stored_email, stored_password = line.strip().split(":")
+                    if stored_email == email:
+                        current_password = stored_password
+                        break
+                else:
+                    return "E-mailiga seotud kasutajat ei leitud!"
+        except FileNotFoundError:
+            return "Andmefaili Tund14.txt ei leitud!"
+
+        # Update the file with the new name
+        update_file(uus_nimi, email, current_password)
+
         subject = "Nime muutmine õnnestus"
         content = f"Tere {vana_nimi},\n\nTeie nimi on muudetud.\nTeie uus nimi on: {uus_nimi}\n\nParimate soovidega,\nMinu sait"
         send_email(email, subject, content)
@@ -116,6 +143,7 @@ def muuda_parool(loginid: list, paroolid: list, kasutajanimi: str, vana_parool: 
             subject = "Parooli muutmine õnnestus"
             content = f"Tere {kasutajanimi},\n\nTeie parool on muudetud.\nTeie parool on: {uus_parool}\n\nParimate soovidega,\nMinu sait"
             send_email(email, subject, content)
+            update_file(kasutajanimi, email, uus_parool)  # Update file with new password
             return "Parool muudetud!"
     return "Vale kasutajanimi või parool!"
 
@@ -134,5 +162,6 @@ def taasta_parool(loginid: list, paroolid: list, kasutajanimi: str, email: str):
         subject = "Paaroli taastmine õnnestus"
         content = f"Tere {kasutajanimi},\n\nTeie parool on taastetud.\nTeie uus parool on: {uus_parool}\n\nParimate soovidega,\nMinu sait"
         send_email(email, subject, content)
+        update_file(kasutajanimi, email, uus_parool)  # Update file with new password
         return f"Uus parool: {uus_parool}"
     return "Kasutajanimi ei leitud!"
