@@ -2,6 +2,7 @@ from Tund14_Moodul import *
 
 loginid = []
 paroolid = []
+emails = {}
 
 while True:
     print("\nVali tegevus:")
@@ -17,6 +18,11 @@ while True:
         if kasutajanimi in loginid:
             print("Kasutajanimi on juba olemas!")
             continue
+        email = input("Sisesta e-mail: ")
+        if not email:
+            print("E-mail on kohustuslik!")
+            continue
+
         parool_valik = input("Kas soovid genereerida parooli? (jah/ei): ").lower()
         if parool_valik == "ei":
             parool = input("Sisesta parool: ")
@@ -37,12 +43,14 @@ while True:
                     punkt = True
 
             if digit and lower and upper and punkt:
-                vastus = registreerimine(loginid, paroolid, kasutajanimi, parool)
+                vastus = registreerimine(loginid, paroolid, kasutajanimi, email, parool)
+                emails[kasutajanimi] = email
                 print(vastus)
             else:
                 print("Parool peab sisaldama numbreid, väikseid ja suuri tähti ning erisümboli!")
         else:
-            print(registreerimine(loginid, paroolid, kasutajanimi))
+            print(registreerimine(loginid, paroolid, kasutajanimi, email))
+            emails[kasutajanimi] = email
 
     elif valik == 2:
         kasutajanimi = input("Sisesta kasutajanimi: ")
@@ -54,18 +62,23 @@ while True:
         if valik2 == "nimi":
             vana_nimi = input("Sisesta vana kasutajanimi: ")
             uus_nimi = input("Sisesta uus kasutajanimi: ")
-            print(muuda_nimi(loginid, vana_nimi, uus_nimi))
+            print(muuda_nimi(loginid, vana_nimi, uus_nimi, emails[vana_nimi]))
+            if vana_nimi in emails:
+                emails[uus_nimi] = emails.pop(vana_nimi)
         elif valik2 == "parool":
             kasutajanimi = input("Sisesta kasutajanimi: ")
             vana_parool = input("Sisesta vana parool: ")
             uus_parool = input("Sisesta uus parool: ")
-            print(muuda_parool(loginid, paroolid, kasutajanimi, vana_parool, uus_parool))
+            if kasutajanimi in emails:
+                print(muuda_parool(loginid, paroolid, kasutajanimi, vana_parool, uus_parool, emails[kasutajanimi]))
+            else:
+                print("E-maili pole leitud kasutajale!")
         else:
             print("Vale valik!")
 
     elif valik == 4:
         kasutajanimi = input("Sisesta kasutajanimi: ")
-        print(taasta_parool(loginid, paroolid, kasutajanimi))
+        print(taasta_parool(loginid, paroolid, kasutajanimi, emails[kasutajanimi]))
 
     elif valik == 5:
         print("Programm väljub!")
