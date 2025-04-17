@@ -22,10 +22,10 @@ def salasona(k: int):
 
 def send_email(to_address, subject, content):
     """
-    Sends an email to the specified address with the given subject and content.
-    :param str to_address: Recipient's email address
-    :param str subject: Email subject
-    :param str content: Email content
+    Saadab määratud aadressile e-kirja antud teema ja sisuga.
+    :param str to_address: Vastuvõtja e-posti aadress.
+    :param str subject: E-posti teema
+    :param str content: E-posti sisu
     """
     sender_email = "maksimtsitkool@gmail.com"
     sender_password = input("Sisesta app password: ")  # Replace with your email's app-specific password
