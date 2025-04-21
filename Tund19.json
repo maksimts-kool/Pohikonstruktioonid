@@ -1,0 +1,21 @@
+{
+  "nimi": "Anna",
+  "vanus": 25,
+  "abielus": false,
+  "lapsed": ["Mati", "Liis"],
+  "koduloomad": null,
+  "autod": [
+    {
+      "mark": "Toyota",
+      "varv": "punane",
+      "joud": 500,
+      "number": "123ABC"
+    },
+    {
+      "mark": "BMW",
+      "varv": "valge",
+      "joud": 700,
+      "number": "222CAS"
+    }
+  ]
+}

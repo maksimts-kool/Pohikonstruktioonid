@@ -1,0 +1,38 @@
+[
+  {
+    "kusimus": "Mis on Python?",
+    "vastus": "programmeerimiskeel"
+  },
+  {
+    "kusimus": "Mis varvi on lumi?",
+    "vastus": "valge"
+  },
+  {
+    "kusimus": "Mis on Eesti pealinn?",
+    "vastus": "Tallinn"
+  },
+  {
+    "kusimus": "Mis on maailma korgeim magi?",
+    "vastus": "Everest"
+  },
+  {
+    "kusimus": "Mitu paeva on aastas?",
+    "vastus": "365"
+  },
+  {
+    "kusimus": "Mis on paikesesusteemi suurim planeet?",
+    "vastus": "Jupiter"
+  },
+  {
+    "kusimus": "Mis on Euroopa suurim riik?",
+    "vastus": "Venemaa"
+  },
+  {
+    "kusimus": "Mis loom on Eesti rahvusloom?",
+    "vastus": "hunt"
+  },
+  {
+    "kusimus": "test",
+    "vastus": "õige"
+  }
+]
