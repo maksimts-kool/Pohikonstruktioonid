@@ -24,7 +24,7 @@ with open("Tund19_klass.json", "w", encoding="utf-8-sig") as f:
     json.dump(klass, f, indent=2)
 
 linn = input("Sisesta linna nimi: ")
-api_voti = "7220568a00c83eaf0b21378b529d2466"  # asenda oma API võtmega
+api_voti = ""  # asenda oma API võtmega
 url = f"http://api.openweathermap.org/data/2.5/weather?q={linn}&appid={api_voti}&units=metric&lang=et"
 vastus = requests.get(url)
 andmed = vastus.json()
