@@ -1,47 +1,5 @@
 {
-  "kõik": [
-    {
-      "nimi": "maks",
-      "õiged": 0,
-      "kokku": 5,
-      "email": "tahmazovhussejn@gmail.com"
-    },
-    {
-      "nimi": "maks",
-      "õiged": 0,
-      "kokku": 5,
-      "email": "tahmazovhussejn@gmail.com"
-    },
-    {
-      "nimi": "sd",
-      "õiged": 0,
-      "kokku": 5,
-      "email": "tahmazovhussejn@gmail.com"
-    },
-    {
-      "nimi": "tahmazovhusse",
-      "õiged": 0,
-      "kokku": 5,
-      "email": "tahmazovhussejn@gmail.com"
-    }
-  ],
+  "kõik": [],
   "õiged": [],
-  "valed": [
-    {
-      "nimi": "maks",
-      "tulemus": "0/5"
-    },
-    {
-      "nimi": "maks",
-      "tulemus": "0/5"
-    },
-    {
-      "nimi": "sd",
-      "tulemus": "0/5"
-    },
-    {
-      "nimi": "tahmazovhusse",
-      "tulemus": "0/5"
-    }
-  ]
+  "valed": []
 }
