@@ -62,7 +62,7 @@ plt.plot(x7, y7, color='blue', marker='s', markersize=5)
 x8 = np.arange(-15, -13, 0.1)
 y8 = -0.5*(x8 + 13)**2 + 3
 plt.plot(x8, y8, color='blue', marker='s', markersize=5)
-x9 = np.arange(-15, -10, 0.1)
+x9 = np.arange(-15, -10, 0.2)
 y9 = np.ones_like(x9) # x || x=y
 plt.plot(x9, y9, color='blue', marker='s', markersize=5)
 x10 = np.arange(3, 4, 0.1)
