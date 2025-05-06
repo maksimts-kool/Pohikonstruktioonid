@@ -54,7 +54,7 @@ def on_graph():
     ys = a * xs**2 + b * xs + c
 
     plt.figure()
-    plt.plot(xs, ys, 'o-', markersize=5)
+    plt.plot(xs, ys)
 
     d = b**2 - 4 * a * c
     if d >= 0:
