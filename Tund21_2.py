@@ -85,7 +85,7 @@ header = tk.Label(
     fg="green",
     font=("Arial", 20)
 )
-header.grid(row=0, column=0, padx=5, pady=5)
+header.grid(row=0, column=0, columnspan=8, padx=5, pady=5)
 
 entry_bg = "lightblue"
 entry_fg = "darkgreen"
@@ -141,7 +141,7 @@ label_result.grid(
     row=2,
     column=0,
     columnspan=8,
-    sticky="nsew",
+    sticky="nsew", # Sticks to all four edges, expanding to fill the entire cell.
     padx=5,
     pady=(10, 5),
     ipady=20
