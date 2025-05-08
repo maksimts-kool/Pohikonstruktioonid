@@ -85,7 +85,7 @@ header = tk.Label(
     fg="green",
     font=("Arial", 20)
 )
-header.grid(row=0, column=0, columnspan=8, sticky="ew", padx=5, pady=5)
+header.grid(row=0, column=0, padx=5, pady=5)
 
 entry_bg = "lightblue"
 entry_fg = "darkgreen"
