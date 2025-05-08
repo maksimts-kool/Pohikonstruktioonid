@@ -50,7 +50,7 @@ def on_graph():
     c = float(entry_c.get())
 
     vx = -b / (2 * a)
-    xs = np.linspace(vx - 10, vx + 10, 200) # [0   0.25 0.5  0.75   1]
+    xs = np.linspace(vx - 10, vx + 10, 200) # [0   200 400 600   800]
     ys = a * xs**2 + b * xs + c
 
     plt.figure()
