@@ -42,7 +42,7 @@ def on_graph():
             valid = False
 
     if not valid:
-        label_result.config(text="Puuduvad tegelikud juured")
+        label_result.config(text="Sisesta numbrid")
         return
 
     a = float(entry_a.get())
@@ -87,7 +87,6 @@ header = tk.Label(
 )
 header.grid(row=0, column=0, columnspan=8, sticky="ew", padx=5, pady=5)
 
-# Coefficient entry backgrounds
 entry_bg = "lightblue"
 entry_fg = "darkgreen"
 
@@ -112,7 +111,6 @@ tk.Label(root, text="=0", font=("Arial", 14), fg=entry_fg).grid(
     row=1, column=5
 )
 
-# Solve button (appearance only)
 btn_solve = tk.Button(
     root,
     text="Lahenda",
@@ -133,7 +131,6 @@ btn_graph = tk.Button(
 )
 btn_graph.grid(row=1, column=7)
 
-# Result display area
 label_result = tk.Label(
     root,
     text="Vastus",
