@@ -2,31 +2,6 @@ import tkinter as tk
 from tkinter import messagebox
 import random
 import os # Kasutame failitee korrektseks leidmiseks
-import vlc
-import time
-
-def play_intro_video(video_path):
-    """
-    Mängib antud video faili tervenisti läbi enne
-    et edasi jätkata.
-    """
-    if not os.path.exists(video_path):
-        return
-    instance = vlc.Instance()
-    player = instance.media_player_new()
-    media = instance.media_new(video_path)
-    player.set_media(media)
-    player.play()
-    # Oota veidi, et player alustaks
-    time.sleep(0.1)
-    # VLC annab pikkuse millisekundites
-    length_ms = player.get_length()
-    if length_ms > 0:
-        time.sleep(length_ms / 1000.0)
-    else:
-        # Kui ei õnnestu saada pikkust, viska lihtsalt 5s oote
-        time.sleep(5)
-    player.stop()
 
 # --- Konstandid ---
 SONA_PIKKUS = 5
@@ -385,26 +360,17 @@ else:
         for entry in sisestus_kastid[0]:
             entry.config(state='disabled')
 
-# --- Käivita Tkinteri põhitsükkel ---
-if __name__ == "__main__":
-    # Esiteks mängi intro
-    skripti_kaust = os.path.dirname(os.path.abspath(__file__))
-    intro_path = os.path.join(skripti_kaust, "Gubby.mp4")
-    play_intro_video(intro_path)
-
-    # Siis loe sõnad ja alusta GUI’t
-    koik_sonad = loe_sonad_failist(SONADE_FAIL)
-    if koik_sonad:
-        uus_mang()
-    else:
-        kontrolli_nupp.config(state='disabled')
-        uus_mang_nupp.config(state='disabled')
-        teade_label.config(
-            text=f"Viga: '{SONADE_FAIL}' ei leitud või on tühi "
-                 f"{SONA_PIKKUS}-tähelistest sõnadest."
-        )
-        if sisestus_kastid:
-            for entry in sisestus_kastid[0]:
-                entry.config(state='disabled')
-
-    aken.mainloop()
+# --- Mängu alustamine ---
+koik_sonad = loe_sonad_failist(SONADE_FAIL)
+if koik_sonad: # Alusta mängu ainult siis, kui sõnad on edukalt loetud
+    uus_mang()
+else:
+    # Kui sõnu ei leitud, keelame nupud ja näitame veateadet aknas
+    kontrolli_nupp.config(state='disabled')
+    uus_mang_nupp.config(state='disabled')
+    teade_label.config(text=f"Viga: '{SONADE_FAIL}' ei leitud või on tühi {SONA_PIKKUS}-tähelistest sõnadest.")
+    # Keela ka esimese rea kastid
+    if sisestus_kastid:
+        for entry in sisestus_kastid[0]:
+            entry.config(state='disabled')
+aken.mainloop() 
