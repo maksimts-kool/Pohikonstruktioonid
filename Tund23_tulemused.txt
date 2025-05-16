@@ -1,0 +1,7 @@
+Sõna: NANNE, Tulemus: Õnnestus, Katseid: 2
+Sõna: BLACK, Tulemus: Ebaõnnestus, Katseid: 6
+Sõna: BLACK, Tulemus: Õnnestus, Katseid: 3
+Sõna: METSA, Tulemus: Õnnestus, Katseid: 3
+Sõna: METSA, Tulemus: Õnnestus, Katseid: 2
+Sõna: METSA, Tulemus: Õnnestus, Katseid: 3
+Sõna: PARIM, Tulemus: Ebaõnnestus, Katseid: 6
