@@ -6,3 +6,5 @@ Sõna: METSA, Tulemus: Õnnestus, Katseid: 2
 Sõna: METSA, Tulemus: Õnnestus, Katseid: 3
 Sõna: PARIM, Tulemus: Ebaõnnestus, Katseid: 6
 Sõna: GUBBY, Ebaõnnestus, katseid: 6
+Sõna: MEOWR, Õnnestus, katseid: 3
+Sõna: GUBBY, Õnnestus, katseid: 2

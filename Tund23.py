@@ -193,7 +193,10 @@ def uus_mang():
             text="Viga sõnade laadimisel. Kontrolli faili."
         )
         return
-
+    
+    kontrolli_nupp.config(state="normal")
+    uus_mang_nupp.config(state="normal")
+    
     katsete_arv = 0
     teade_label.config(text="")
     klaviatuuri_seisund = {}
