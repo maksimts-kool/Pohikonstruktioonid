@@ -19,12 +19,12 @@ VARV_KASUTATUD_HALL = "#808080"
 VARV_KASUTATUD_KOLLANE = "#B8860B"
 VARV_KASUTATUD_ROHELINE = "#556B2F"
 
-# --- Globaalsed muutujad ---
+# Globaalsed muutujad
 katsete_arv = 0
 koik_sonad = []
-sisestus_kastid = []            # List of lists of Entry widgets
-klaviatuuri_nupud = {}          # Map letter -> Label widget
-klaviatuuri_seisund = {}        # Map letter -> current bg color
+sisestus_kastid = []            # Loetelu nimekirjad Entry vidinad
+klaviatuuri_nupud = {}          # Kaardikiri -> Sildi vidin
+klaviatuuri_seisund = {}        # Kaardikiri -> praegune bg-värv
 
 # --- Funktsioonid ---
 
@@ -98,7 +98,7 @@ def kontrolli_katset():
     varvi_tahed(katsete_arv, pakkumine, varvid)
     uuenda_klaviatuuri(uus_kl_seisund)
 
-    # Disable current row
+    # Praeguse rea väljalülitamine
     for e in praegune_rida:
         e.config(state="disabled")
 
@@ -110,7 +110,7 @@ def kontrolli_katset():
     if katsete_arv == KATSETE_ARV_MAX:
         lopeta_mang(False)
     else:
-        # Enable next row
+        # Järgmise rea lubamine
         nxt = sisestus_kastid[katsete_arv]
         for e in nxt:
             e.config(state="normal")
@@ -195,7 +195,7 @@ def uus_mang():
     teade_label.config(text="")
     klaviatuuri_seisund = {}
 
-    # Reset entry grid
+    # Reset keyboard
     for r in range(KATSETE_ARV_MAX):
         for c in range(SONA_PIKKUS):
             e = sisestus_kastid[r][c]
