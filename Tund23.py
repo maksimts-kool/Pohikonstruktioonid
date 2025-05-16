@@ -334,7 +334,7 @@ def show_intro():
     while True:
         try:
             f = tk.PhotoImage(
-                file="baconhair.gif", format=f"gif -index {idx}"
+                file="Tund23_baconhair.gif", format=f"gif -index {idx}"
             )
             raw_frames.append(f)
             idx += 1
@@ -378,7 +378,7 @@ if __name__ == "__main__":
     aken.title("Wordle Mäng")
     aken.config(bg=VARV_TAUST)
     aken.geometry("400x550")
-    aken.iconbitmap("images.ico")
+    aken.iconbitmap("Tund23_images.ico")
     aken.resizable(False, False)
     # Kui soovid ikooni kasutada
 
