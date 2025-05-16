@@ -349,8 +349,13 @@ def show_intro():
     gif_lbl.pack()
 
     def animate(i=0):
+        # if the widget has been destroyed, stop
+        if not gif_lbl.winfo_exists():
+            return
+
         gif_lbl.config(image=frames[i])
         aken.after(100, animate, (i+1) % len(frames))
+
 
     if frames:
         animate()
@@ -380,7 +385,6 @@ if __name__ == "__main__":
     aken.geometry("400x550")
     aken.iconbitmap("Tund23_images.ico")
     aken.resizable(False, False)
-    # Kui soovid ikooni kasutada
 
     show_intro()
     aken.mainloop()
