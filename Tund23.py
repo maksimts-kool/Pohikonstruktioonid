@@ -35,9 +35,7 @@ uus_mang_nupp = None
 def loe_sonad_failist(failinimi):
     """Loeb sõnad failist, filtreerib 5-tähelised ja tagastab listina."""
     try:
-        skripti_kaust = os.path.dirname(os.path.abspath(__file__))
-        path = os.path.join(skripti_kaust, failinimi)
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(failinimi, 'r', encoding='utf-8') as f:
             sonad = [
                 line.strip().upper()
                 for line in f
@@ -196,7 +194,7 @@ def uus_mang():
     
     kontrolli_nupp.config(state="normal")
     uus_mang_nupp.config(state="normal")
-    
+
     katsete_arv = 0
     teade_label.config(text="")
     klaviatuuri_seisund = {}
