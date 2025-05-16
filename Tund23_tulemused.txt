@@ -8,3 +8,6 @@ Sõna: PARIM, Tulemus: Ebaõnnestus, Katseid: 6
 Sõna: GUBBY, Ebaõnnestus, katseid: 6
 Sõna: MEOWR, Õnnestus, katseid: 3
 Sõna: GUBBY, Õnnestus, katseid: 2
+Sõna: MEOWR, Õnnestus, katseid: 3
+Sõna: MEOWR, Ebaõnnestus, katseid: 6
+Sõna: VAHEM, Õnnestus, katseid: 5

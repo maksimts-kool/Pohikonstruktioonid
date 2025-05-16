@@ -20,15 +20,11 @@ VARV_KASUTATUD_KOLLANE = "#B8860B"
 VARV_KASUTATUD_ROHELINE = "#556B2F"
 
 # --- Globaalsed muutujad ---
-oige_sona = ""
 katsete_arv = 0
 koik_sonad = []
 sisestus_kastid = []            # List of lists of Entry widgets
 klaviatuuri_nupud = {}          # Map letter -> Label widget
 klaviatuuri_seisund = {}        # Map letter -> current bg color
-teade_label = None
-kontrolli_nupp = None
-uus_mang_nupp = None
 
 # --- Funktsioonid ---
 
@@ -69,7 +65,7 @@ def kontrolli_katset():
         )
         return
 
-    # Prepare for coloring
+    # Värvid
     varvid = [VARV_HALL] * SONA_PIKKUS
     oige_list = list(oige_sona)
     pakk_list = list(pakkumine)
