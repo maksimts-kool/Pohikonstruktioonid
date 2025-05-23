@@ -1,109 +1,111 @@
 import customtkinter as ctk
-from tkinter import Canvas, StringVar
+from tkinter import Canvas
 from tkinter.messagebox import showinfo
 from tkinter.simpledialog import askstring
 from PIL import Image, ImageTk
 import pygame
 import os
 
-PARTS = ["nagu", "juuksed", "silmad", "nina", "suu"]
 
-VARIANT_NAMES = {
-    "nagu": {
-        "1": "Klassikaline",
-        "2": "Plokk",
-        "3": "Epic",
-        "4": "",
-        "5": "",
-    },
-    "juuksed": {
-        "1": "Lahe",
-        "2": "Bacon",
-        "3": "Builders hat",
-        "4": "",
-        "5": "",
-    },
-    "silmad": {
-        "1": "Must",
-        "2": "Normaalne",
-        "3": "Naljakas",
-        "4": "Spongebob",
-        "5": "",
-    },
-    "nina": {
-        "1": "Normaalne",
-        "2": "Porgandi",
-        "3": "",
-        "4": "",
-        "5": "",
-    },
-    "suu": {
-        "1": "Avatud suu",
-        "2": "Hammastega",
-        "3": "Naljakas",
-        "4": "Ristkülikukujuline",
-        "5": "",
-    },
+OSAD = ["nagu", "juuksed", "silmad", "nina", "suu"]
+
+OSA_NIMED = {
+    "nagu": ["Klassikaline", "Plokk", "Epic"],
+    "juuksed": ["Lahe", "Bacon", "Ehitaja müts", "Lahtised"],
+    "silmad": ["Must", "Normaalne", "Naljakas", "Spongebob", "Katkine"],
+    "nina": ["Normaalne", "Porgandi", "Punane"],
+    "suu": ["Avatud suu", "Hammastega", "Naljakas", "Ristkülik", "Katkine"]
 }
 
-NAME_TO_ID = {
-    part: {name: vid for vid, name in VARIANT_NAMES[part].items()}
-    for part in PARTS
-}
+valitud_osad = {}     
+näidatud_osad = {}   
+osa_pildid = {}      
 
-is_shown = {p: False for p in PARTS}
-object_id = {}
-tk_images = {}
-selected_variant = {p: "1" for p in PARTS}
+for osa in OSAD:
+    valitud_osad[osa] = 1
+    näidatud_osad[osa] = False
 
+def mängi_muusikat():
+    """Alusta muusika mängimist"""
+    try:
+        pygame.mixer.music.play(-1) 
+    except:
+        showinfo("Viga", "Muusikafaili ei leitud!")
 
-def mangi_muusika():
-    pygame.mixer.music.play(-1)
-
-
-def peata_muusika():
+def peata_muusikat():
+    """Peata muusika"""
     pygame.mixer.music.stop()
 
-
-def toggle_part(part):
-    variant = selected_variant[part]
-    fname = os.path.join(os.path.dirname(__file__), f"{part}{variant}.png")
-    if is_shown[part]:
-        canvas.delete(object_id[part])
-        is_shown[part] = False
+def näita_peida_osa(osa_nimi):
+    """Näita või peida näo osa"""
+    if näidatud_osad[osa_nimi]:
+        canvas.delete(f"osa_{osa_nimi}")
+        näidatud_osad[osa_nimi] = False
     else:
-        img = Image.open(fname).convert("RGBA").resize((400, 400))
-        tk_img = ImageTk.PhotoImage(img)
-        tk_images[part] = tk_img
-        object_id[part] = canvas.create_image(200, 200, image=tk_img)
-        is_shown[part] = True
+        variandi_number = valitud_osad[osa_nimi]
+        pildi_fail = os.path.join("Tund24", f"{osa_nimi}{variandi_number}.png")
+        
+        if os.path.exists(pildi_fail):
+            pilt = Image.open(pildi_fail).resize((400, 400))
+            foto = ImageTk.PhotoImage(pilt)
+            osa_pildid[osa_nimi] = foto
+            canvas.create_image(200, 200, image=foto, tags=f"osa_{osa_nimi}")
+            näidatud_osad[osa_nimi] = True
 
+def muuda_varianti(osa_nimi, uus_variandi_nimi):
+    variantide_nimekiri = OSA_NIMED[osa_nimi]
+    variandi_number = variantide_nimekiri.index(uus_variandi_nimi) + 1
+    valitud_osad[osa_nimi] = variandi_number
+    
+    if näidatud_osad[osa_nimi]:
+        näita_peida_osa(osa_nimi)
+        näita_peida_osa(osa_nimi) 
 
-def salvesta_face():
-    name = askstring("Salvesta", "Sisesta failinimi (ilma laiendita):")
-    if not name:
+def salvesta_nägu():
+    
+    failinimi = askstring("Salvesta", "Sisesta faili nimi:")
+    if not failinimi:
         return
-    out_img = Image.new("RGBA", (400, 400), (255, 255, 255, 255))
-    for p in PARTS:
-        if is_shown[p]:
-            layer = (
-                Image.open(f"{p}{selected_variant[p]}.png")
-                .convert("RGBA")
-                .resize((400, 400))
-            )
-            out_img.alpha_composite(layer)
-    out_img.save(f"{name}.png")
-    showinfo("Salvestatud", f"Fail '{name}.png' on salvestatud.")
+    
+    lõplik_pilt = Image.new("RGBA", (400, 400), (255, 255, 255, 255))
+    lisatud_osad = []
+    
+    for osa in OSAD:
+        if näidatud_osad[osa]:
+            variant = valitud_osad[osa]
+            osa_fail = os.path.join("Tund24", f"{osa}{variant}.png")
+            
+            if os.path.exists(osa_fail):
+                try:
+                    osa_pilt = Image.open(osa_fail).convert("RGBA").resize((400, 400))
+                    lõplik_pilt.alpha_composite(osa_pilt)
+                    lisatud_osad.append(f"{osa}{variant}")
+                except Exception as e:
+                    print(f"Viga {osa} lisamisel: {e}")
+    
+    väljund_fail = f"{failinimi}.png"
+    lõplik_pilt.save(väljund_fail)
+    
+    showinfo("Valmis", "Nägu salvestatud")
 
 
-app = ctk.CTk()
-app.title("Tund24")
-app.geometry("600x550")
+# pygame.mixer.init()
+try:
+    pygame.mixer.music.load("Tund24_Elevator.mp3")
+except:
+    print("Muusikafaili ei leitud")
 
-frame_controls = ctk.CTkFrame(app)
-frame_controls.pack(side="left", padx=5, pady=5, fill="y")
 
-button_style = {
+rakendus = ctk.CTk()
+rakendus.title("Näo tegija")
+rakendus.geometry("700x550")
+
+
+juhtimis_paneel = ctk.CTkFrame(rakendus)
+juhtimis_paneel.pack(side="left", fill="y", padx=10, pady=10)
+
+
+nupu_stiil = {
     "width": 150,
     "height": 40,
     "fg_color": "green",
@@ -111,54 +113,61 @@ button_style = {
     "corner_radius": 20,
 }
 
-for part in PARTS:
-    # 3) Начальное значение — название у id=1
-    var = StringVar(value=VARIANT_NAMES[part][selected_variant[part]])
-    menu = ctk.CTkOptionMenu(
-        frame_controls,
-        variable=var,
-        values=list(VARIANT_NAMES[part].values()),
-        command=lambda name, p=part: selected_variant.__setitem__(
-            p, NAME_TO_ID[p][name]
-        ),
+
+for osa in OSAD:
+
+    menüü = ctk.CTkOptionMenu(
+        juhtimis_paneel,
+        values=OSA_NIMED[osa],
+        command=lambda valik, o=osa: muuda_varianti(o, valik)
     )
-    menu.pack(pady=5)
-    ctk.CTkButton(
-        frame_controls,
-        text=part.capitalize(),
-        command=lambda p=part: toggle_part(p),
-        **button_style
-    ).pack(pady=3)
+    menüü.pack(pady=5)
+    
 
-ctk.CTkButton(
-    frame_controls,
-    text="Loo nägu",
-    command=salvesta_face,
-    **button_style
-).pack(pady=10)
+    nupp = ctk.CTkButton(
+        juhtimis_paneel,
+        text=f"Näita {osa}",
+        command=lambda o=osa: näita_peida_osa(o),
+        **nupu_stiil
+    )
+    nupp.pack(pady=3)
 
-preview_frame = ctk.CTkFrame(app, width=420, height=420, corner_radius=0)
-preview_frame.pack(side="top", padx=10, pady=10)
 
-canvas = Canvas(preview_frame, width=400, height=400, bg="white")
+salvesta_nupp = ctk.CTkButton(
+    juhtimis_paneel,
+    text="Salvesta nägu",
+    command=salvesta_nägu,
+    **nupu_stiil
+)
+salvesta_nupp.pack(pady=20)
+
+
+lõuendi_raam = ctk.CTkFrame(rakendus, width=420, height=420, corner_radius=0)
+lõuendi_raam.pack(side="top", padx=10, pady=10)
+
+canvas = Canvas(lõuendi_raam, width=400, height=400, bg="white")
 canvas.pack(padx=5, pady=5)
 
-frame_music = ctk.CTkFrame(app)
-frame_music.pack(side="bottom", pady=5, fill="x")
 
-ctk.CTkButton(
-    frame_music,
+muusika_paneel = ctk.CTkFrame(rakendus)
+muusika_paneel.pack(side="bottom", pady=5, fill="x")
+
+mängi_nupp = ctk.CTkButton(
+    muusika_paneel,
     text="Mängi muusikat",
-    command=mangi_muusika,
-    **button_style
-).pack(padx=5, pady=5)
-ctk.CTkButton(
-    frame_music,
+    command=mängi_muusikat,
+    **nupu_stiil
+)
+mängi_nupp.pack(side="left", padx=5, pady=5)
+
+peata_nupp = ctk.CTkButton(
+    muusika_paneel,
     text="Peata muusikat",
-    command=peata_muusika,
-    **button_style
-).pack(padx=5, pady=5)
+    command=peata_muusikat,
+    **nupu_stiil
+)
+peata_nupp.pack(side="left", padx=5, pady=5)
 
-toggle_part("nagu")
+näita_peida_osa("nagu")
 
-app.mainloop()
+rakendus.mainloop()
