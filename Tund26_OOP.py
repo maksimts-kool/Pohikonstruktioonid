@@ -1,5 +1,3 @@
-from itertools import product
-
 
 class Product:
     def __init__(self, name, price, id):
@@ -7,14 +5,17 @@ class Product:
         self.price = price
         self.id = id
 
+    def __eq__ (self, other):
+        return isinstance(other, Product) and other.id == self.id
+
 class Shop:
     def __init__(self, name):
         self.name = name
-        self.products = []
+        self.products = {}
         self.productscount = {}
         self.carts = []
     
-    def add_product(self, product: Product, count: int = 1) -> 
+    def add_product(self, product: Product, count: int = 1):
         if not product.id:
             return False
         if product.id not in self.products:
@@ -49,19 +50,32 @@ class Cart:
         if count_in_store < count:
             count = count_in_store
         self.shop.move_to_cart(product, count)
-        # self.products[product.id] = self.products.get(product.id, 0) + count
+        self.products[product.id] = self.products.get(product.id, 0) + count
         return count
+    
+    def get_total_price(self):
+        total = 0
+        for product_id, count in self.products.items():
+            total += self.shop.products[product_id].price * count
+        return total
 
 if __name__ == "__main__":
     shop1 = Shop("Rama")
     shop2 = Shop("Selma")
 
-    p1 = Product("Milk", 80)
-    p2 = Product("Bread", 120)
+    p1 = Product("Milk", 80, 1)
+    p1a = Product("Milk", 80, 1)
+    p2 = Product("Bread", 120, 2)
 
     shop1.add_product(p1, 10)
     shop1.add_product(p2, 10)
 
     c1 = Cart(shop1)
-    print(c1.add_product(p1, 100))  # Should print 5
-    print(shop1.productscount)   # Should print 5
+    print(c1.add_product(p1, 4))
+    print(shop1.productscount)
+    print(c1.products)
+    print(c1.add_product(p1a, 4))
+    print(shop1.productscount)
+    print(c1.products)
+    c1.add_product(p2, 3)
+    print(c1.get_total_price())
